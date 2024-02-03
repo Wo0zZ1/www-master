@@ -1,2 +1,12 @@
-.categories {
+.Categories {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 25px 20px;
+    gap: 10px;
+    min-height: 100%;
+
+    table {
+        max-width: 1000px;
+    }
 }

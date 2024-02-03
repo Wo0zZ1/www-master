@@ -1,13 +1,14 @@
 import React from 'react';
 import './index.scss';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setLogged, setLogin } from '../../redux/slices/globalSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Registartion = () => {
     const [login, setLog] = React.useState('');
     const [password, setPassword] = React.useState('');
 
-    console.log(123);
+    const navigate = useNavigate();
 
     const loginHandler = (e) => {
         if (e.target.value.length <= 10) setLog(e.target.value);
@@ -27,6 +28,7 @@ const Registartion = () => {
             dispatch(setLogged(true));
             dispatch(setLogin(login));
         }
+        navigate('/tests');
     };
 
     return (

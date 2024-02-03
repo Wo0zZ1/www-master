@@ -4,21 +4,14 @@ const initialState = {
     contests: [
         { title: 'Minecraft', description: 'loremipsum...' },
         {
-            title: 'Minecraft',
-            description: 'lor4234234emipsum12341234532412342314213423142314',
+            title: 'Test #2',
+            description: 'lorem ipsum dolor sit amet',
         },
-        { title: 'Minecraft', description: 'loremipsum...' },
-        { title: 'Minecraft', description: 'loremipsum...' },
-        // { title: 'Minecraft', description: 'loremipsum...' },
-        // { title: 'Minecraft', description: 'loremipsum...' },
-        // { title: 'Minecraft', description: 'loremipsum...' },
-        // { title: 'Minecraft', description: 'loremipsum...' },
-        // { title: 'Minecraft', description: 'loremipsum...' },
-        // { title: 'Minecraft', description: 'loremipsum...' },
-        // { title: 'Minecraft', description: 'loremipsum...' },
+        { title: 'Division 1', description: 'loremipsum...' },
+        { title: 'Minecraft', description: 'lorem ipsum dolor sit amet' },
         {
-            title: 'Minecraft',
-            description: 'lor4234234emipsum12341234532412342314213423142314',
+            title: 'test',
+            description: '123123',
         },
     ],
 };

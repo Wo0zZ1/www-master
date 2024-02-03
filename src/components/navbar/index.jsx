@@ -15,7 +15,7 @@ const Navbar = () => {
             <Link
                 to='/categories'
                 className={activeFirst ? 'block' : 'block active'}>
-                <p>Категории</p>
+                <p>Вопросы</p>
             </Link>
         </div>
     );

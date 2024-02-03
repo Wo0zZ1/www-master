@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    loggedIn: true,
-    login: 'Admin',
+    loggedIn: false,
+    login: '',
 };
 
 const globalSlice = createSlice({
