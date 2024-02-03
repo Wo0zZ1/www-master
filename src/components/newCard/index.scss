@@ -1,0 +1,39 @@
+.NewCard {
+    background-color: white;
+    border-color: #0486fd;
+    border-width: 6px;
+    border-style: dashed;
+    border-radius: 15px;
+    width: 260px;
+    height: 370px;
+    display: flex;
+    cursor: pointer;
+
+    &:hover {
+        scale: 1.02;
+        background-color: rgb(235, 235, 235);
+        border-style: solid;
+        transition: all 0.1s;
+    }
+
+    .content {
+        height: 100%;
+        width: 100%;
+        position: relative;
+
+        > * {
+            background-color: #0486fd;
+            display: flex;
+            width: 30px;
+            height: 150px;
+            position: absolute;
+            border-radius: 15px;
+            top: 28%;
+            left: 43%;
+        }
+
+        .second {
+            rotate: 90deg;
+        }
+    }
+}

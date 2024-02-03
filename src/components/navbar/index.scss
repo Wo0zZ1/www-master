@@ -1,0 +1,23 @@
+.Navbar {
+    margin-left: 50px;
+    display: flex;
+    gap: 55px;
+    height: 60px;
+
+    p {
+        font-size: 30px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    > .block {
+        cursor: pointer;
+        display: flex;
+        text-decoration: none;
+        background-color: rgb(209, 209, 209);
+        border-radius: 20px 20px 0 0;
+        padding: 10px 10px;
+    }
+    > .block.active {
+        background-color: antiquewhite;
+    }
+}

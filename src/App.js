@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Registartion from './components/registration';
+import Header from './components/header';
+import Main from './components/main';
+import { UseDispatch, useSelector } from 'react-redux';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const loggedIn = useSelector((state) => state.global.loggedIn);
+    return (
+        <div className='App wrapper'>
+            <Header />
+            {loggedIn ? <Main /> : <Registartion />}
+        </div>
+    );
 }
 
 export default App;
