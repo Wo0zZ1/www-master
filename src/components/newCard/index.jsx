@@ -8,6 +8,9 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 import { addContest } from '../../redux/slices/contestSlice';
 
+import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
+import app from '../../firebase';
+
 const NewCard = () => {
     const [show, setShow] = React.useState(false);
 
@@ -27,8 +30,18 @@ const NewCard = () => {
 
     const disptach = useDispatch();
 
-    const sender = () => {
+    const db = getFirestore(app);
+
+    const sender = async () => {
         if (!title || !description) return;
+        try {
+            await addDoc(collection(db, 'contests'), {
+                title: title,
+                description: description,
+            });
+        } catch (e) {
+            console.error('Error adding document: ', e);
+        }
         disptach(addContest({ title: title, description: description }));
         // Осуществить создание проекта на базе данных
         setTitle('');

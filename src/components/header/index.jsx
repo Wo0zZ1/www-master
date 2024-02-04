@@ -3,15 +3,19 @@ import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './index.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLogin, setLogged } from '../../redux/slices/globalSlice';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const dispatch = useDispatch();
 
     const login = useSelector((state) => state.global.login);
 
+    const navigate = useNavigate();
+
     const logoutHandler = (e) => {
         dispatch(setLogged(false));
         dispatch(setLogin(''));
+        navigate('/registration');
     };
 
     return (

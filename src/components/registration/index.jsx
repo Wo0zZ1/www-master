@@ -31,7 +31,7 @@ const Registartion = () => {
         if (email && password) {
             const auth = getAuth();
             signInWithEmailAndPassword(auth, email, password)
-                .then(({ user }) => {
+                .then((user) => {
                     dispatch(setLogged(true));
                     dispatch(setLogin(email));
                     navigate('/tests');
@@ -52,6 +52,7 @@ const Registartion = () => {
                     alert('Успешное создание аккаунта!');
                 })
                 .catch((error) => {
+                    alert('На данную почту уже зарегистрирован аккаунт!');
                     console.log(error);
                 });
         }

@@ -5,8 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addCategories } from '../../redux/slices/categoriesSlice';
 import Table from 'react-bootstrap/Table';
 
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import app from '../../firebase';
+
 const Categories = () => {
     const disptach = useDispatch();
+    const db = getFirestore(app);
 
     let categories = useSelector((state) => state.categories.categories);
 
@@ -27,6 +31,18 @@ const Categories = () => {
                     return [...stroke.split(':')].map((el) => {
                         return el.replace('\r', '');
                     });
+                });
+                ans.map(async (item) => {
+                    try {
+                        await addDoc(collection(db, 'categories'), {
+                            category: item[0],
+                            question: item[1],
+                            answer: item[2],
+                            rating: parseInt(item[3]),
+                        });
+                    } catch (e) {
+                        console.error('Error adding document: ', e);
+                    }
                 });
                 disptach(
                     addCategories(

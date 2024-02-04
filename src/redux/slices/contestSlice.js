@@ -1,19 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    contests: [
-        { title: 'Minecraft', description: 'loremipsum...' },
-        {
-            title: 'Test #2',
-            description: 'lorem ipsum dolor sit amet',
-        },
-        { title: 'Division 1', description: 'loremipsum...' },
-        { title: 'Minecraft', description: 'lorem ipsum dolor sit amet' },
-        {
-            title: 'test',
-            description: '123123',
-        },
-    ],
+    contests: [],
 };
 
 const contestSlice = createSlice({
@@ -23,9 +11,12 @@ const contestSlice = createSlice({
         addContest(state, action) {
             state.contests.push(action.payload);
         },
+        setContests(state, action) {
+            state.contests = action.payload;
+        },
     },
 });
 
-export const { addContest } = contestSlice.actions;
+export const { addContest, setContests } = contestSlice.actions;
 
 export default contestSlice.reducer;
