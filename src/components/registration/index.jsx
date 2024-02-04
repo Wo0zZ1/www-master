@@ -3,37 +3,63 @@ import './index.scss';
 import { useDispatch } from 'react-redux';
 import { setLogged, setLogin } from '../../redux/slices/globalSlice';
 import { useNavigate } from 'react-router-dom';
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+} from 'firebase/auth';
 
 const Registartion = () => {
-    const [login, setLog] = React.useState('');
+    const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
     const navigate = useNavigate();
 
-    const loginHandler = (e) => {
-        if (e.target.value.length <= 10) setLog(e.target.value);
+    const emailHandler = (e) => {
+        if (e.target.value.length <= 23) setEmail(e.target.value);
     };
 
     const passwordHandler = (e) => {
-        if (e.target.value.length <= 10) setPassword(e.target.value);
+        if (e.target.value.length <= 15) setPassword(e.target.value);
     };
 
     const dispatch = useDispatch();
 
-    const submitHandler = (e) => {
-        // ОСУЩЕСТВИТЬ ЗАПРОС В БАЗУ ДАННЫХ
+    const loginHandler = (e) => {
         e.preventDefault();
         e.stopPropagation();
-        if (login && password) {
-            dispatch(setLogged(true));
-            dispatch(setLogin(login));
+        if (email && password) {
+            const auth = getAuth();
+            signInWithEmailAndPassword(auth, email, password)
+                .then(({ user }) => {
+                    dispatch(setLogged(true));
+                    dispatch(setLogin(email));
+                    navigate('/tests');
+                })
+                .catch((error) => {
+                    alert('Неправильный логин или пароль!');
+                });
         }
-        navigate('/tests');
+    };
+
+    const registerHandler = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (email && password) {
+            const auth = getAuth();
+            createUserWithEmailAndPassword(auth, email, password)
+                .then(({ user }) => {
+                    alert('Успешное создание аккаунта!');
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
     };
 
     return (
         <form
-            onSubmit={submitHandler}
+            // onSubmit={submitHandler}
             className='Registartion d-flex flex-column width-sm'>
             <div className='content bg-light p-4'>
                 <div className='mb-3'>
@@ -44,15 +70,15 @@ const Registartion = () => {
                         Логин
                     </label>
                     <input
-                        type='text'
-                        value={login}
-                        placeholder='Введите логин'
+                        type='email'
+                        value={email}
+                        placeholder='Введите почту'
                         autoComplete='true'
                         autoFocus={true}
                         className='form-control'
                         id='login'
                         aria-describedby='emailHelp'
-                        onChange={loginHandler}
+                        onChange={emailHandler}
                     />
                 </div>
                 <div className='mb-3'>
@@ -69,9 +95,20 @@ const Registartion = () => {
                         onChange={passwordHandler}
                     />
                 </div>
-                <button type='submit' className='btn btn-outline-primary'>
-                    Войти
-                </button>
+                <div className='buttons'>
+                    <button
+                        onClick={loginHandler}
+                        type='submit'
+                        className='btn btn-outline-primary'>
+                        Войти
+                    </button>
+                    <button
+                        onClick={registerHandler}
+                        type='submit'
+                        className='btn btn-outline-primary'>
+                        Зарегистрироваться
+                    </button>
+                </div>
             </div>
         </form>
     );
