@@ -8,8 +8,8 @@ const Content = () => {
     return (
         <div className='Content'>
             <Routes>
-                <Route path='/tests' element={<Tests />} />
-                <Route path='/categories' element={<Categories />} />
+                <Route path='tests' element={<Tests />} />
+                <Route path='categories' element={<Categories />} />
             </Routes>
         </div>
     );

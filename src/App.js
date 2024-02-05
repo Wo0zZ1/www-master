@@ -3,7 +3,7 @@ import Registartion from './components/registration';
 import Header from './components/header';
 import Main from './components/main';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { setCategories } from './redux/slices/categoriesSlice';
 import { setContests } from './redux/slices/contestSlice';
 import app from './firebase';
@@ -29,7 +29,7 @@ function App() {
             console.error('Error adding document: ', e);
         }
         return () => {};
-    }, []);
+    });
 
     const loggedIn = useSelector((state) => state.global.loggedIn);
 

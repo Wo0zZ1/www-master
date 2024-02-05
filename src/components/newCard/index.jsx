@@ -8,7 +8,7 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch } from 'react-redux';
 import { addContest } from '../../redux/slices/contestSlice';
 
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import app from '../../firebase';
 
 const NewCard = () => {
