@@ -10,6 +10,7 @@ const Content = () => {
             <Routes>
                 <Route path='tests' element={<Tests />} />
                 <Route path='categories' element={<Categories />} />
+                <Route path='*' element={<></>} />
             </Routes>
         </div>
     );
